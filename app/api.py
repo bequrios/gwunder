@@ -2,7 +2,7 @@ import os
 import yaml
 from flask import Blueprint, request, jsonify
 
-from app.config import SPARQL_ENDPOINTS, DEFAULT_ENDPOINT, DEFAULT_LIMIT, MAX_LIMIT
+from app.config import SPARQL_ENDPOINTS, ENDPOINT_URI_PATTERNS, DEFAULT_ENDPOINT, DEFAULT_LIMIT, MAX_LIMIT
 from app.services.sparql import query_sparql
 
 api_bp = Blueprint("api", __name__)
@@ -22,6 +22,7 @@ def get_endpoints():
             "default": DEFAULT_ENDPOINT,
             "max_limit": MAX_LIMIT,
             "prefixes": load_prefixes(),
+            "uri_patterns": ENDPOINT_URI_PATTERNS,
         }
     )
 

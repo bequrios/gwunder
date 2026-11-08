@@ -11,6 +11,7 @@
     const loading = document.getElementById("loading");
 
     let prefixes = {};
+    let uriPatterns = {};
 
     function formatUri(uri) {
         if (!uri || !uri.startsWith("http")) return uri;
@@ -20,6 +21,17 @@
             }
         }
         return uri;
+    }
+
+    function makeLink(uri) {
+        const currentEndpoint = endpointSelect.value;
+        const pattern = uriPatterns[currentEndpoint];
+        const display = formatUri(uri);
+        if (pattern && uri.includes(pattern)) {
+            const params = new URLSearchParams({ uri, endpoint: currentEndpoint, limit: limitInput.value });
+            return `<a href="/?${params}" title="${uri}">${display}</a>`;
+        }
+        return `<a href="${uri}" target="_blank" title="${uri}">${display}</a>`;
     }
 
     function updateUrlParams(uri, endpoint, limit) {
@@ -53,6 +65,7 @@
         endpointSelect.value = data.default;
         limitInput.max = data.max_limit;
         prefixes = data.prefixes || {};
+        uriPatterns = data.uri_patterns || {};
     }
 
     async function performQuery(uri, endpoint, limit) {
@@ -84,14 +97,14 @@
 
             const pred = document.createElement("td");
             const predUrl = row.predicate?.value || "";
-            pred.innerHTML = `<a href="${predUrl}" target="_blank" title="${predUrl}">${formatUri(predUrl)}</a>`;
+            pred.innerHTML = makeLink(predUrl);
 
             const obj = document.createElement("td");
             const objVal = row.object?.value || "";
             const objType = row.object?.type || "uri";
             const objLang = row.object?.["xml:lang"];
             if (objType === "uri") {
-                obj.innerHTML = `<a href="${objVal}" target="_blank" title="${objVal}">${formatUri(objVal)}</a>`;
+                obj.innerHTML = makeLink(objVal);
             } else {
                 obj.textContent = objVal;
                 if (objLang) {
@@ -108,7 +121,7 @@
             const type = document.createElement("td");
             const typeVal = row.objectType?.value || "";
             if (typeVal) {
-                type.innerHTML = `<a href="${typeVal}" target="_blank" title="${typeVal}">${formatUri(typeVal)}</a>`;
+                type.innerHTML = makeLink(typeVal);
             }
 
             tr.appendChild(pred);
