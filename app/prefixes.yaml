@@ -10,3 +10,4 @@ geo: http://www.w3.org/2003/01/geo/wgs84_pos#
 dbpedia: http://dbpedia.org/ontology/
 wikidata: http://www.wikidata.org/prop/direct/
 wd: http://www.wikidata.org/entity/
+xsd: http://www.w3.org/2001/XMLSchema#
