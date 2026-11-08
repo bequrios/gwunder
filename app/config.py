@@ -1,15 +1,13 @@
-SPARQL_ENDPOINTS = {
-    "LINDAS-PROD": "https://ld.admin.ch/query",
-    "LINDAS-INT": "https://int.ld.admin.ch/query",
-    "LINDAS-TEST": "https://test.ld.admin.ch/query"
-}
+import os
+import yaml
 
-ENDPOINT_URI_PATTERNS = {
-    "LINDAS-PROD": "ld.admin.ch",
-    "LINDAS-INT": "ld.admin.ch",
-    "LINDAS-TEST": "ld.admin.ch"
-}
+_path = os.path.join(os.path.dirname(__file__), "config.yaml")
+with open(_path) as _f:
+    _config = yaml.safe_load(_f)
 
-DEFAULT_ENDPOINT = "LINDAS-PROD"
-DEFAULT_LIMIT = 100
-MAX_LIMIT = 1000
+SPARQL_ENDPOINTS = _config["endpoints"]
+ENDPOINT_URI_PATTERNS = _config["endpoint_uri_patterns"]
+DEFAULT_ENDPOINT = _config["default_endpoint"]
+DEFAULT_LIMIT = _config["default_limit"]
+MAX_LIMIT = _config["max_limit"]
+PREFIXES = _config["prefixes"]
