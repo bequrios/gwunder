@@ -121,6 +121,30 @@
         resultsSection.hidden = false;
     }
 
+    const filterInputs = [
+        document.getElementById("filter-predicate"),
+        document.getElementById("filter-object"),
+        document.getElementById("filter-label"),
+        document.getElementById("filter-type"),
+    ];
+
+    function applyFilters() {
+        const filters = filterInputs.map((el) => el.value.toLowerCase());
+        const rows = resultsBody.querySelectorAll("tr");
+        rows.forEach((row) => {
+            const cells = row.querySelectorAll("td");
+            let visible = true;
+            cells.forEach((cell, i) => {
+                if (filters[i] && !cell.textContent.toLowerCase().includes(filters[i])) {
+                    visible = false;
+                }
+            });
+            row.style.display = visible ? "" : "none";
+        });
+    }
+
+    filterInputs.forEach((input) => input.addEventListener("input", applyFilters));
+
     searchForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const uri = uriInput.value.trim();

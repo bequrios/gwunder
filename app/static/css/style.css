@@ -136,6 +136,19 @@ header h1 {
     color: #555;
 }
 
+.filter-row input {
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.filter-row input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
 #results-table tr:hover {
     background: #f9f9f9;
 }

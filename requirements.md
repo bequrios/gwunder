@@ -8,6 +8,7 @@ A web-based tool to dereference URIs from Triple-Stores and display their associ
 - **Triple Listing**: Display all `s, p, o` triples where a given URI is the subject.
 - **Full URI Display**: Show the full URI for all values (not just the slug). Use prefix shortening from a configurable `prefixes.yaml` file (e.g., `schema:hasPart` instead of `http://schema.org/hasPart`).
 - **Language Tag**: If an object value is a literal with an `xml:lang`, display the language code in grey after the value (e.g., "Zürich `de`").
+- **Column Filters**: Each column in the results table has a filter input. Typing dynamically hides rows that do not match the filter text (case-insensitive).
 - **Stateful URLs (Deep Linking)**: The URL must reflect the current search state (e.g., `?uri=...&endpoint=...&limit=...`) to ensure shareable and reproducible links.
 
 ## User Interface
