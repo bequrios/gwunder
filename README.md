@@ -7,6 +7,7 @@ This project is a web-based tool designed to dereference URIs from Triple-Stores
 It was built mostly with OpenCode and QWEN3.8-27b.
 
 ## Features
+
 - **SPARQL Integration**: Connect to various Triple-Stores via SPARQL endpoints.
 - **Triple Exploration**: View all `s, p, o` triples associated with a specific subject URI.
 - **Search Input**: Enter a URI and hit "Go" to initiate the lookup.
@@ -16,14 +17,8 @@ It was built mostly with OpenCode and QWEN3.8-27b.
 - **Visualizations**: (Planned) Graphical representations for specific data classes.
 
 ## Technology Stack
+
 - **Backend**: Python / Flask (API server)
-- **Frontend**: (TBD) – consumes the JSON API
+- **Frontend**: JavaScript, consumes the JSON API
 - **Communication**: REST / JSON API
 - **Query Language**: SPARQL
-
-## Status
-- [x] Requirements Definition
-- [x] Project Initialization
-- [ ] Environment Setup
-- [ ] Core Backend Development
-- [ ] Frontend Implementation
