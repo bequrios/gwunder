@@ -136,12 +136,12 @@
             const type = document.createElement("td");
             const typesVal = row.types?.value || "";
             if (typesVal) {
-                typesVal.split(" || ").forEach((typeUri, i) => {
-                    if (i > 0) type.appendChild(document.createElement("br"));
+                typesVal.split(" || ").forEach((typeUri) => {
                     const a = document.createElement("a");
                     a.href = typeUri;
                     a.target = "_blank";
                     a.title = typeUri;
+                    a.className = "type-link";
                     a.textContent = formatUri(typeUri);
                     type.appendChild(a);
                 });
