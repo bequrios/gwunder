@@ -4,6 +4,8 @@
 
 This project is a web-based tool designed to dereference URIs from Triple-Stores and display their associated information. It allows users to explore linked data by querying SPARQL endpoints and visualizing the relationships between entities.
 
+It was built mostly with OpenCode and QWEN3.8-27b.
+
 ## Features
 - **SPARQL Integration**: Connect to various Triple-Stores via SPARQL endpoints.
 - **Triple Exploration**: View all `s, p, o` triples associated with a specific subject URI.
