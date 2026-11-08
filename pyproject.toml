@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 authors = [
-    { name = "Benedikt Hitz (OpenCode)", email = "bhitz@gmx.net" }
+    { name = "Benedikt Hitz", email = "bhitz@gmx.net" }
 ]
 requires-python = ">=3.12"
 dependencies = [
