@@ -24,7 +24,10 @@ def query_sparql(endpoint: str, uri: str, limit: int = 100) -> dict:
     LIMIT {limit}
     """.strip()
 
-    headers = {"Accept": "application/sparql-results+json"}
+    headers = {
+        "Accept": "application/sparql-results+json",
+        "User-Agent": "Gwunder/1.0 (Triple Store Explorer)",
+    }
 
     try:
         response = requests.post(
