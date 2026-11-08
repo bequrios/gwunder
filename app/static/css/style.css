@@ -166,6 +166,10 @@ header h1 {
     color: #7f8c8d;
 }
 
+.loading[hidden] {
+    display: none;
+}
+
 .spinner {
     width: 20px;
     height: 20px;
