@@ -3,18 +3,24 @@ import requests
 
 def query_sparql(endpoint: str, uri: str, limit: int = 100) -> dict:
     query = f"""
-    PREFIX rdf: <http://www.w3.org/1999-02-22-rdf-syntax-ns#>
-    SELECT ?predicate ?object ?objectLabel ?objectType
+    PREFIX rdf: <http://www.w3.org/1999/02-22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX schema: <http://schema.org/>
+    SELECT ?predicate ?object
+           (GROUP_CONCAT(DISTINCT CONCAT(STR(?label), " ~~ ", COALESCE(lang(?label), "")); SEPARATOR=" || ") AS ?labels)
+           (GROUP_CONCAT(DISTINCT STR(?objectType); SEPARATOR=" || ") AS ?types)
     WHERE {{
         <{uri}> ?predicate ?object .
         OPTIONAL {{
-            ?object rdfs:label ?objectLabel .
-            FILTER(lang(?objectLabel) = "en")
+            {{ ?object rdfs:label ?label }}
+            UNION
+            {{ ?object schema:name ?label }}
         }}
         OPTIONAL {{
             ?object rdf:type ?objectType .
         }}
     }}
+    GROUP BY ?predicate ?object
     LIMIT {limit}
     """.strip()
 

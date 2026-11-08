@@ -167,6 +167,12 @@ header h1 {
     font-size: 0.8rem;
 }
 
+.label-entry {
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
 .error-message {
     margin-top: 1rem;
     padding: 1rem;

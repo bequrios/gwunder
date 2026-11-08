@@ -8,6 +8,8 @@ A web-based tool to dereference URIs from Triple-Stores and display their associ
 - **Triple Listing**: Display all `s, p, o` triples where a given URI is the subject.
 - **Full URI Display**: Show the full URI for all values (not just the slug). Use prefix shortening from a configurable `prefixes.yaml` file (e.g., `schema:hasPart` instead of `http://schema.org/hasPart`).
 - **Language Tag**: If an object value is a literal with an `xml:lang`, display the language code in grey after the value (e.g., "Zürich `de`").
+- **Labels (rdfs:label + schema:name)**: The Label column shows all `rdfs:label` and `schema:name` values of the object (all languages). Each label displays with its language tag in grey. (Filtering planned for later.)
+- **Types**: The Type column shows all `rdf:type` values of the object as clickable links.
 - **Column Filters**: Each column in the results table has a filter input. Typing dynamically hides rows that do not match the filter text (case-insensitive).
 - **Internal Navigation**: If a predicate or object URI matches the URI pattern of the currently selected endpoint (defined per endpoint in config), clicking it navigates within Gwunder (same endpoint/limit settings) instead of opening the external URI. This must work independently of the real URL of Gwunder (e.g., if Gwunder is hosted at `https://example.com/gwunder`, clicking a matching URI should navigate to `https://example.com/gwunder?uri=...&endpoint=...&limit=...`).
 - **Stateful URLs (Deep Linking)**: The URL must reflect the current search state (e.g., `?uri=...&endpoint=...&limit=...`) to ensure shareable and reproducible links.

@@ -116,12 +116,35 @@
             }
 
             const label = document.createElement("td");
-            label.textContent = row.objectLabel?.value || "";
+            const labelsVal = row.labels?.value || "";
+            if (labelsVal) {
+                labelsVal.split(" || ").forEach((entry) => {
+                    const [text, lang] = entry.split(" ~~ ");
+                    const span = document.createElement("span");
+                    span.className = "label-entry";
+                    span.textContent = text;
+                    if (lang) {
+                        const langEl = document.createElement("span");
+                        langEl.className = "lang-code";
+                        langEl.textContent = ` ${lang}`;
+                        span.appendChild(langEl);
+                    }
+                    label.appendChild(span);
+                });
+            }
 
             const type = document.createElement("td");
-            const typeVal = row.objectType?.value || "";
-            if (typeVal) {
-                type.innerHTML = makeLink(typeVal);
+            const typesVal = row.types?.value || "";
+            if (typesVal) {
+                typesVal.split(" || ").forEach((typeUri, i) => {
+                    if (i > 0) type.appendChild(document.createElement("br"));
+                    const a = document.createElement("a");
+                    a.href = typeUri;
+                    a.target = "_blank";
+                    a.title = typeUri;
+                    a.textContent = formatUri(typeUri);
+                    type.appendChild(a);
+                });
             }
 
             tr.appendChild(pred);
