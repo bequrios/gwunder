@@ -18,14 +18,10 @@ header {
     margin-bottom: 2rem;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    color: #2c3e50;
-}
-
-.subtitle {
-    color: #7f8c8d;
-    font-size: 1.1rem;
+.header-img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .config-panel {
