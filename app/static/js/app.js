@@ -10,6 +10,18 @@
     const errorMessage = document.getElementById("error-message");
     const loading = document.getElementById("loading");
 
+    let prefixes = {};
+
+    function formatUri(uri) {
+        if (!uri || !uri.startsWith("http")) return uri;
+        for (const [prefix, ns] of Object.entries(prefixes)) {
+            if (uri.startsWith(ns)) {
+                return `${prefix}:${uri.slice(ns.length)}`;
+            }
+        }
+        return uri;
+    }
+
     function updateUrlParams(uri, endpoint, limit) {
         const params = new URLSearchParams();
         if (uri) params.set("uri", uri);
@@ -40,6 +52,7 @@
         }
         endpointSelect.value = data.default;
         limitInput.max = data.max_limit;
+        prefixes = data.prefixes || {};
     }
 
     async function performQuery(uri, endpoint, limit) {
@@ -71,15 +84,14 @@
 
             const pred = document.createElement("td");
             const predUrl = row.predicate?.value || "";
-            const predShort = predUrl.split("/").pop() || predUrl;
-            pred.innerHTML = `<a href="${predUrl}" target="_blank" title="${predUrl}">${predShort}</a>`;
+            pred.innerHTML = `<a href="${predUrl}" target="_blank" title="${predUrl}">${formatUri(predUrl)}</a>`;
 
             const obj = document.createElement("td");
             const objVal = row.object?.value || "";
             const objType = row.object?.type || "uri";
             const objLang = row.object?.["xml:lang"];
             if (objType === "uri") {
-                obj.innerHTML = `<a href="${objVal}" target="_blank">${objVal.split("/").pop() || objVal}</a>`;
+                obj.innerHTML = `<a href="${objVal}" target="_blank" title="${objVal}">${formatUri(objVal)}</a>`;
             } else {
                 obj.textContent = objVal;
                 if (objLang) {
@@ -96,7 +108,7 @@
             const type = document.createElement("td");
             const typeVal = row.objectType?.value || "";
             if (typeVal) {
-                type.innerHTML = `<a href="${typeVal}" target="_blank">${typeVal.split("/").pop() || typeVal}</a>`;
+                type.innerHTML = `<a href="${typeVal}" target="_blank" title="${typeVal}">${formatUri(typeVal)}</a>`;
             }
 
             tr.appendChild(pred);

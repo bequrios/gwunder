@@ -1,9 +1,17 @@
+import os
+import yaml
 from flask import Blueprint, request, jsonify
 
 from app.config import SPARQL_ENDPOINTS, DEFAULT_ENDPOINT, DEFAULT_LIMIT, MAX_LIMIT
 from app.services.sparql import query_sparql
 
 api_bp = Blueprint("api", __name__)
+
+
+def load_prefixes():
+    path = os.path.join(os.path.dirname(__file__), "prefixes.yaml")
+    with open(path) as f:
+        return yaml.safe_load(f)
 
 
 @api_bp.route("/api/endpoints", methods=["GET"])
@@ -13,6 +21,7 @@ def get_endpoints():
             "endpoints": SPARQL_ENDPOINTS,
             "default": DEFAULT_ENDPOINT,
             "max_limit": MAX_LIMIT,
+            "prefixes": load_prefixes(),
         }
     )
 
