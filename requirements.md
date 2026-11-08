@@ -19,6 +19,9 @@ A web-based tool to dereference URIs from Triple-Stores and display their associ
 ## Future Features (Phase 2)
 - **Visualizations**: Graphical representation of the data for specific classes.
 
+## Non-Functional Requirements
+- **Backend/Frontend Separation**: The backend and frontend must be clearly separated. They communicate exclusively via a JSON API (REST). The backend exposes endpoints for SPARQL queries; the frontend renders the results and handles user interaction.
+
 ## Technology Stack
 - **Backend**: Python / Flask
 - **Query Language**: SPARQL

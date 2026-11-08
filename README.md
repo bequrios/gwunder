@@ -14,7 +14,9 @@ This project is a web-based tool designed to dereference URIs from Triple-Stores
 - **Visualizations**: (Planned) Graphical representations for specific data classes.
 
 ## Technology Stack
-- **Backend**: Python / Flask
+- **Backend**: Python / Flask (API server)
+- **Frontend**: (TBD) – consumes the JSON API
+- **Communication**: REST / JSON API
 - **Query Language**: SPARQL
 
 ## Status
