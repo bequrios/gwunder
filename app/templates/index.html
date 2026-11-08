@@ -31,8 +31,24 @@
     </section>
 
     <section id="results-section" class="results-section" hidden>
-        <h2 id="displayed-uri" class="displayed-uri"></h2>
-        <div id="results-count" class="results-count"></div>
+        <div class="sticky-header">
+            <h2 id="displayed-uri" class="displayed-uri"></h2>
+            <div id="results-count" class="results-count"></div>
+            <div class="table-header">
+                <div class="table-header-row">
+                    <span>Predicate</span>
+                    <span>Object</span>
+                    <span>Label</span>
+                    <span>Type</span>
+                </div>
+                <div class="table-header-row filter-row">
+                    <input type="text" id="filter-predicate" placeholder="Filter...">
+                    <input type="text" id="filter-object" placeholder="Filter...">
+                    <input type="text" id="filter-label" placeholder="Filter...">
+                    <input type="text" id="filter-type" placeholder="Filter...">
+                </div>
+            </div>
+        </div>
         <table id="results-table">
             <colgroup>
                 <col class="col-predicate">
@@ -40,20 +56,6 @@
                 <col class="col-label">
                 <col class="col-type">
             </colgroup>
-            <thead>
-                <tr>
-                    <th>Predicate</th>
-                    <th>Object</th>
-                    <th>Label</th>
-                    <th>Type</th>
-                </tr>
-                <tr class="filter-row">
-                    <td><input type="text" id="filter-predicate" placeholder="Filter..."></td>
-                    <td><input type="text" id="filter-object" placeholder="Filter..."></td>
-                    <td><input type="text" id="filter-label" placeholder="Filter..."></td>
-                    <td><input type="text" id="filter-type" placeholder="Filter..."></td>
-                </tr>
-            </thead>
             <tbody id="results-body"></tbody>
         </table>
         <div id="error-message" class="error-message" hidden></div>

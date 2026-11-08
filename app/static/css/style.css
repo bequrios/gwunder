@@ -98,26 +98,75 @@ header h1 {
     background: #2980b9;
 }
 
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background: #f9f9f9;
+    z-index: 10;
+    padding: 0.5rem 0;
+}
+
 .displayed-uri {
     font-size: 1.4rem;
     font-weight: 700;
     color: #2c3e50;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     word-break: break-all;
 }
 
 .results-count {
     color: #7f8c8d;
-    margin-bottom: 1rem;
     font-size: 0.9rem;
+}
+
+.table-header {
+    margin-top: 0.5rem;
+    background: #f5f5f5;
+    border-radius: 6px 6px 0 0;
+    border: 1px solid #e0e0e0;
+    border-bottom: none;
+}
+
+.table-header-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+}
+
+.table-header-row > span {
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.filter-row {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.filter-row input {
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+}
+
+.filter-row input:focus {
+    outline: none;
+    border-color: #3498db;
 }
 
 #results-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: 0 0 8px 8px;
     border: 1px solid #e0e0e0;
     table-layout: fixed;
 }
@@ -127,7 +176,6 @@ header h1 {
 #results-table colgroup .col-label { width: 25%; }
 #results-table colgroup .col-type { width: 25%; }
 
-#results-table th,
 #results-table td {
     padding: 0.75rem 1rem;
     text-align: left;
@@ -136,25 +184,6 @@ header h1 {
     word-break: break-all;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-#results-table th {
-    background: #f5f5f5;
-    font-weight: 600;
-    color: #555;
-}
-
-.filter-row input {
-    width: 100%;
-    padding: 0.4rem 0.6rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 0.85rem;
-}
-
-.filter-row input:focus {
-    outline: none;
-    border-color: #3498db;
 }
 
 #results-table tr:hover {
