@@ -77,10 +77,17 @@
             const obj = document.createElement("td");
             const objVal = row.object?.value || "";
             const objType = row.object?.type || "uri";
+            const objLang = row.object?.["xml:lang"];
             if (objType === "uri") {
                 obj.innerHTML = `<a href="${objVal}" target="_blank">${objVal.split("/").pop() || objVal}</a>`;
             } else {
                 obj.textContent = objVal;
+                if (objLang) {
+                    const langSpan = document.createElement("span");
+                    langSpan.className = "lang-code";
+                    langSpan.textContent = ` ${objLang}`;
+                    obj.appendChild(langSpan);
+                }
             }
 
             const label = document.createElement("td");

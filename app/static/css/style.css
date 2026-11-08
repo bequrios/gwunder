@@ -149,6 +149,11 @@ header h1 {
     text-decoration: underline;
 }
 
+.lang-code {
+    color: #999;
+    font-size: 0.8rem;
+}
+
 .error-message {
     margin-top: 1rem;
     padding: 1rem;
