@@ -1,0 +1,9 @@
+services:
+  gwunder:
+    image: ghcr.io/your-org/gwunder:latest
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.gwunder.rule=Host(`gwunder.di.digisus-lab.ch`)"
+      - "traefik.http.routers.gwunder.tls=true"
+      - "traefik.http.services.gwunder.loadbalancer.server.port=5000"
